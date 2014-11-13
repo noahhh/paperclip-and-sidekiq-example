@@ -1,8 +1,11 @@
 head
   javascript:
+    while(@ringtone.processing === true) {
     setTimeout(function(){
+    @ringtone.reload.processing,
     window.location.reload(1);
-    }, 10000)
+    }, 5000)
+    }
 
 body
   .small-12.columns
