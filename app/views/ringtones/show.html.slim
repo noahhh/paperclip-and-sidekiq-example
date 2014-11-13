@@ -1,9 +1,20 @@
-.small-12.columns
-  h2 = @ringtone.name
+head
+  javascript:
+    setTimeout(function(){
+    window.location.reload(1);
+    }, 10000)
 
-  div = render partial: "audio", locals: { ringtone: @ringtone }
+body
+  .small-12.columns
 
-  h3 Formats
-  ul
-    li = link_to "Android", @ringtone.url(:android)
-    li = link_to "iPhone", @ringtone.url(:iphone)
+    - if @ringtone.processing?
+      div The ringtone is still processsing.
+    - else
+      h2 = @ringtone.name
+
+      div = render partial: "audio", locals: { ringtone: @ringtone }
+
+      h3 Formats
+      ul
+        li = link_to "Android", @ringtone.url(:android)
+        li = link_to "iPhone", @ringtone.url(:iphone)
